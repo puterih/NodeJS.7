@@ -40,16 +40,26 @@ const fs = require("fs");
  * Readline
  sebuah module untuk membaca apa yg dituliskan nanti ke command prompt/ di terminalnya
  */
-const Readline = require("readline");
+const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin, // proses ini apa yg dilakukan di terminal
   output: process.stdout, // proses ini apa yg kita kirimkan nanti
 });
 
-rl.question("Masukkan nama anda : ", (nama) => {
-  // (nama) menampung ke dalam sebuah callback function
-  console.log(`Terimakasih ${nama}`);
+// // 1 pertanyaan
+// rl.question("Masukkan nama anda : ", (nama) => {
+//   // (nama) menampung ke dalam sebuah callback function
+//   console.log(`Terimakasih ${nama}`);
 
-  rl.close();
+//   rl.close();
+// });
+
+// 2 pertanyaan callback
+rl.question("Masukkan nama anda : ", (nama) => {
+  rl.question("Masukkan noHP anda : ", (noHP) => {
+    console.log(`Terimakasih ${nama}, sudah menginputkan ${noHP}`);
+
+    rl.close();
+  });
 });
