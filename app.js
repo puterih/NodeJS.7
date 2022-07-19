@@ -29,9 +29,27 @@ const fs = require("fs");
 // // // penggunaan encoding "utf-8" contohnya untuk mengubah yang tadinya Buffer menjadi huruf latin
 // console.log(data);
 
-// Membaca isi file (Asynchronous) *gaya penulisan callback
-fs.readFile("data/test.txt", "utf-8", (err, data) => {
-  //(err, data) merupakan 2 callback. Data itu yg dikembalikan dari isi filenya
-  if (err) throw err; //throw(melemparkan) sama seperti return karna langsung keluar dari function
-  console.log(data); // jika berhasil
+// // Membaca isi file (Asynchronous) *gaya penulisan callback
+// fs.readFile("data/test.txt", "utf-8", (err, data) => {
+//   //(err, data) merupakan 2 callback. Data itu yg dikembalikan dari isi filenya
+//   if (err) throw err; //throw(melemparkan) sama seperti return karna langsung keluar dari function
+//   console.log(data); // jika berhasil
+// });
+
+/**
+ * Readline
+ sebuah module untuk membaca apa yg dituliskan nanti ke command prompt/ di terminalnya
+ */
+const Readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin, // proses ini apa yg dilakukan di terminal
+  output: process.stdout, // proses ini apa yg kita kirimkan nanti
+});
+
+rl.question("Masukkan nama anda : ", (nama) => {
+  // (nama) menampung ke dalam sebuah callback function
+  console.log(`Terimakasih ${nama}`);
+
+  rl.close();
 });
